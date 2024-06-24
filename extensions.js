@@ -631,16 +631,9 @@ export const AuthenticationFormExtension = {
             }
             .privacy {
               width: 100%;
-              display: flex;
-              align-items: center;
+              margin: 5px 0;
               font-size: 0.8em;
               color: #888;
-              margin: 5px 0;
-            }
-            .privacy label {
-              display: flex;
-              align-items: center;
-              width: 100%;
             }
             .privacy input {
               margin-right: 10px;
@@ -707,7 +700,7 @@ export const AuthenticationFormExtension = {
           firstName: firstName.value,
           lastName: lastName.value,
           email: email.value,
-          privacyAgreement: privacyCheckbox.checked
+          privacyAgreement: privacyCheckbox.checked // this will be true or false
         },
       })
     })
@@ -715,3 +708,4 @@ export const AuthenticationFormExtension = {
     element.appendChild(formContainer)
   },
 }
+
