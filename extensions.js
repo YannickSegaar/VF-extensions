@@ -630,10 +630,20 @@ export const AuthenticationFormExtension = {
               cursor: pointer;
             }
             .privacy {
+              width: 100%;
               display: flex;
               align-items: center;
               font-size: 0.8em;
               color: #888;
+              margin: 5px 0;
+            }
+            .privacy label {
+              display: flex;
+              align-items: center;
+              width: 100%;
+            }
+            .privacy input {
+              margin-right: 10px;
             }
             .privacy a {
               color: #2e7ff1;
