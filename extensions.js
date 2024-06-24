@@ -601,7 +601,7 @@ export const AuthenticationFormExtension = {
               font-size: 0.8em;
               color: #888;
             }
-            input[type="text"], input[type="email"], input[type="checkbox"] {
+            input[type="text"], input[type="email"] {
               width: 100%;
               border: none;
               border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
@@ -631,14 +631,17 @@ export const AuthenticationFormExtension = {
             }
             .privacy {
               display: flex;
-              flex-direction: column;
-              align-items: flex-start;
+              align-items: center;
               font-size: 0.8em;
               color: #888;
               margin: 5px 0;
             }
             .privacy-checkbox {
-              margin-bottom: 5px;
+              margin-right: 10px;
+            }
+            .privacy label {
+              display: flex;
+              align-items: center;
             }
             .privacy a {
               color: #2e7ff1;
@@ -666,7 +669,7 @@ export const AuthenticationFormExtension = {
           <div class="privacy">
             <input type="checkbox" class="privacy-checkbox" name="privacy-checkbox" required>
             <label for="privacy-checkbox">
-              I agree to RomAIx's <a href="https://www.google.com/" target="_blank">privacy agreements</a>
+              I agree to RomAIx's <a href="YOUR_PRIVACY_POLICY_URL" target="_blank">privacy agreements</a>
             </label>
           </div><br><br>
 
@@ -710,4 +713,3 @@ export const AuthenticationFormExtension = {
     element.appendChild(formContainer)
   },
 }
-
