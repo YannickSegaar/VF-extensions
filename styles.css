@@ -68,3 +68,24 @@ body {
 .card-cta:hover {
     background-color: #0056b3;
 }
+
+/* For the top banner to fill the screen */
+.top-banner {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    padding: 0;
+    background-image: url('path/to/your/image.jpg'); /* Adjust this to your actual banner image */
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Optional: Adjust the content inside the banner */
+.top-banner-content {
+    text-align: center;
+    color: white; /* Or any other color to contrast with the background */
+    font-size: 3rem;
+}
