@@ -695,17 +695,19 @@ export const GTH_FormExtension = {
             /* General Styling */
             form {
               font-family: "Montserrat", sans-serif;
-              width: 100%;
-              padding: 20px;
+              width: 100%; /* Full width of the container */
+              padding: 10px; /* Reduced padding */
               background-color: #f9f9f9;
               box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
               border-radius: 5px;
+              margin: 0; /* Ensure no extra margin */
             }
             label {
-              font-size: 1em;
+              font-size: 0.9em; /* Smaller font size */
               color: #444;
               margin-bottom: 5px;
               display: block;
+              width: 100%; /* Ensure labels stretch the full width */
             }
             .required::after {
               content: ' *';
@@ -714,41 +716,42 @@ export const GTH_FormExtension = {
             input[type="text"], input[type="email"], input[type="tel"], select, textarea {
               width: 100%;
               border: 1px solid #ccc;
-              padding: 10px;
-              margin-bottom: 15px;
-              font-size: 1em;
+              padding: 8px; /* Reduced padding */
+              margin-bottom: 10px; /* Less space between elements */
+              font-size: 0.9em; /* Smaller font */
               border-radius: 3px;
               box-sizing: border-box;
-              color: #888;
+              color: #000; /* Set text color to black when input is entered */
             }
-            input::placeholder, textarea::placeholder {
-              color: #bfbfbf;
+            input::placeholder, textarea::placeholder, select option[value=""] {
+              color: #bfbfbf; /* Placeholder text color */
             }
-            .phone, .email, .name, .services {
-              width: calc(50% - 10px);
-              display: inline-block;
-              margin-right: 10px;
+            select {
+              color: #000; /* Ensure selected text matches other fields */
+            }
+            select option {
+              color: #000; /* Make sure options are black, but placeholder grey */
             }
             textarea {
               width: 100%;
-              height: 100px;
+              height: 80px; /* Reduced height */
+              color: #000; /* Text entered in the textarea is black */
             }
             input[type="submit"] {
               background-color: #ff6900;
               border: none;
               color: white;
-              padding: 15px 30px; /* Adjusting padding to reduce width */
+              padding: 10px 20px; /* Reduced padding for smaller button */
               border-radius: 12px;
-              font-size: 1em;
+              font-size: 0.9em; /* Smaller font size */
               font-weight: bold; /* Bold text */
               text-transform: uppercase; /* Uppercase text */
               cursor: pointer;
               background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
               background-size: cover;
               background-position: center;
-              width: auto;
-              display: block;
-              margin: 0 auto; /* Centering the button */
+              background-repeat: no-repeat; /* Ensure no repeating */
+              width: 100%;
               transition: background-color 0.3s ease;
             }
             input[type="submit"]:hover {
@@ -759,16 +762,12 @@ export const GTH_FormExtension = {
             }
             /* Responsive Styling */
             @media (max-width: 768px) {
-              .form-row {
-                flex-direction: column;
+              form {
+                width: 100%; /* Ensure it scales on smaller screens */
               }
               input[type="submit"] {
-                font-size: 1.2em;
+                font-size: 1em;
                 padding: 12px;
-              }
-              .phone, .email, .name, .services {
-                width: 100%;
-                margin-right: 0;
               }
             }
           </style>

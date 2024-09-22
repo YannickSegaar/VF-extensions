@@ -1,0 +1,72 @@
+/* Customize the header */
+.vfrc-header {
+    background-color: #042d62; /* Blue background */
+    background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* White text color for the header */
+    padding: 15px;
+    border-radius: 12px 12px 0 0; /* Rounded corners for the top */
+  }
+  
+  /* Header Assistant info (e.g., name and description) */
+  .vfrc-assistant-info--title {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .vfrc-assistant-info--description {
+    font-size: 1em;
+  }
+  
+  /* Customize the avatar image in the header */
+  .vfrc-avatar {
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  /* Customize the footer */
+  .vf-footer {
+    background-color: #042d62; /* Blue background */
+    background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px;
+    border-radius: 0 0 12px 12px; /* Rounded corners for the bottom */
+  }
+  
+  /* Ensure the message input field is not overridden */
+  .vfrc-input {
+    background-color: white;
+    color: #000;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+  
+  /* Customize the chat launcher */
+  .vfrc-launcher {
+    background-color: #042d62;
+    background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+  }
+  
+  /* Adjust button styling inside the chat widget */
+  .vfrc-button {
+    background-color: #042d62; /* Make buttons consistent with blue color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-weight: bold;
+  }
+  
+  .vfrc-button:hover {
+    background-color: #ff6900; /* Orange hover color */
+  }
+  
