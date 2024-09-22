@@ -1,6 +1,6 @@
 /* Customize the header */
 .vfrc-header {
-    background-color: #4a6204; /* Blue background */
+    background-color: #042d62; /* Blue background */
     background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
     background-size: cover;
     background-position: center;
@@ -54,16 +54,6 @@
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 50%;
-  }
-  
-  /* Adjust button styling inside the chat widget */
-  .vfrc-button {
-    background-color: #042d62; /* Make buttons consistent with blue color */
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 15px;
-    font-weight: bold;
   }
   
   .vfrc-button:hover {
