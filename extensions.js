@@ -681,3 +681,169 @@ export const AuthenticationFormExtension = {
     element.appendChild(formContainer)
   },
 }
+
+export const GTH_FormExtension = {
+  name: 'Forms',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'GTH_ext_form' || trace.payload.name === 'GTH_ext_form',
+  render: ({ trace, element }) => {
+    const formContainer = document.createElement('form')
+
+    formContainer.innerHTML = `
+          <style>
+            /* General Styling */
+            form {
+              font-family: "Montserrat", sans-serif;
+              width: 100%;
+              padding: 20px;
+              background-color: #f9f9f9;
+              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+              border-radius: 5px;
+            }
+            label {
+              font-size: 1em;
+              color: #444;
+              margin-bottom: 5px;
+              display: block;
+            }
+            .required::after {
+              content: ' *';
+              color: red;
+            }
+            input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+              width: 100%;
+              border: 1px solid #ccc;
+              padding: 10px;
+              margin-bottom: 15px;
+              font-size: 1em;
+              border-radius: 3px;
+              box-sizing: border-box;
+              color: #888;
+            }
+            input::placeholder, textarea::placeholder {
+              color: #bfbfbf;
+            }
+            .phone, .email, .name, .services {
+              width: calc(50% - 10px);
+              display: inline-block;
+              margin-right: 10px;
+            }
+            textarea {
+              width: 100%;
+              height: 100px;
+            }
+            input[type="submit"] {
+              background-color: #ff6900;
+              border: none;
+              color: white;
+              padding: 15px 30px; /* Adjusting padding to reduce width */
+              border-radius: 12px;
+              font-size: 1em;
+              font-weight: bold; /* Bold text */
+              text-transform: uppercase; /* Uppercase text */
+              cursor: pointer;
+              background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+              background-size: cover;
+              background-position: center;
+              width: auto;
+              display: block;
+              margin: 0 auto; /* Centering the button */
+              transition: background-color 0.3s ease;
+            }
+            input[type="submit"]:hover {
+              background-color: #042d62; /* Blue color on hover */
+            }
+            .invalid {
+              border-color: red;
+            }
+            /* Responsive Styling */
+            @media (max-width: 768px) {
+              .form-row {
+                flex-direction: column;
+              }
+              input[type="submit"] {
+                font-size: 1.2em;
+                padding: 12px;
+              }
+              .phone, .email, .name, .services {
+                width: 100%;
+                margin-right: 0;
+              }
+            }
+          </style>
+
+          <div class="form-row">
+            <label for="name" class="required">Name</label>
+            <input type="text" class="name" name="name" placeholder="John Doe" required>
+          </div>
+
+          <div class="form-row">
+            <label for="phone" class="required">Contact Number</label>
+            <input type="tel" class="phone" name="phone" placeholder="+123 456 7890" required pattern="\\d+" title="Invalid phone number, please enter only numbers">
+          </div>
+
+          <div class="form-row">
+            <label for="email" class="required">Email</label>
+            <input type="email" class="email" name="email" placeholder="youremail@company.com" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$" title="Invalid email address">
+          </div>
+
+          <div class="form-row">
+            <label for="services" class="required">Services</label>
+            <select class="services" name="services" required>
+              <option value="" disabled selected>Select Service</option>
+              <option value="Oahu Island Tours">Oahu Island Tours</option>
+              <option value="Pearl Harbor Tours">Pearl Harbor Tours</option>
+              <option value="Luaus Tours">Luaus Tours</option>
+              <option value="Private Tours">Private Tours</option>
+              <option value="General Inquiry">General Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea class="message" name="message" placeholder="Message"></textarea>
+          </div>
+
+          <input type="submit" class="submit" value="Submit">
+        `
+
+    formContainer.addEventListener('submit', function (event) {
+      event.preventDefault()
+
+      const name = formContainer.querySelector('.name')
+      const phone = formContainer.querySelector('.phone')
+      const email = formContainer.querySelector('.email')
+      const services = formContainer.querySelector('.services')
+      const message = formContainer.querySelector('.message')
+
+      if (
+        !name.checkValidity() ||
+        !phone.checkValidity() ||
+        !email.checkValidity() ||
+        !services.checkValidity()
+      ) {
+        name.classList.add('invalid')
+        phone.classList.add('invalid')
+        email.classList.add('invalid')
+        services.classList.add('invalid')
+        return
+      }
+
+      formContainer.querySelector('.submit').remove()
+
+      window.voiceflow.chat.interact({
+        type: 'complete',
+        payload: {
+          name: name.value,
+          phone: phone.value,
+          email: email.value,
+          services: services.value,
+          message: message.value
+        },
+      })
+    })
+
+    element.appendChild(formContainer)
+  },
+}
