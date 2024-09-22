@@ -27,76 +27,80 @@
   </head>
   <body>
     <canvas id="confetti-canvas"></canvas>
-    <div id="flat-chat"></div>
-    <div id="voiceflow-chat-frame"></div>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script type="module">
-      import { VideoExtension,
-                TimerExtension,
-                FormExtension,
-                MapExtension,
-                FileUploadExtension,
-                KBUploadExtension,
-                DateExtension,
-                ConfettiExtension,
-                FeedbackExtension } from '/extensions.js';
+<div id="flat-chat"></div>
+<div id="voiceflow-chat-frame"></div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script type="module">
+  import { VideoExtension,
+            TimerExtension,
+            FormExtension,
+            MapExtension,
+            FileUploadExtension,
+            KBUploadExtension,
+            DateExtension,
+            ConfettiExtension,
+            AuthenticationFormExtension,
+            GTH_FormExtension,
+            FeedbackExtension } from '/extensions.js';
 
-      (function (d, t) {
-        var v = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-        v.onload = function () {
-          window.voiceflow.chat.load({
-            verify: { projectID: '662b920a5750c73428ff493d' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production',
-            user: {
-              name: 'Demo User',
-            },
-            render: {
-              mode: 'overlay',
-            },
-            autostart: false,
-            allowDangerousHTML: true,
-            assistant: {
-              extensions: [
-                VideoExtension,
-                TimerExtension,
-                FormExtension,
-                MapExtension,
-                FileUploadExtension,
-                KBUploadExtension,
-                DateExtension,
-                ConfettiExtension,
-                FeedbackExtension,
-              ],
-            },
-          }).then(() => {
-            window.voiceflow.chat.proactive.clear(); // clear all previous messages
+  (function (d, t) {
+    var v = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    v.onload = function () {
+      window.voiceflow.chat.load({
+        verify: { projectID: '66ed54695ee859bfb84fe587' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production',
+        user: {
+          name: 'Demo User',
+        },
+        render: {
+            mode: 'overlay',
+        },
+        autostart: false,
+        allowDangerousHTML: true,
+        assistant: {
+          extensions: [
+            VideoExtension,
+            TimerExtension,
+            FormExtension,
+            MapExtension,
+            FileUploadExtension,
+            KBUploadExtension,
+            DateExtension,
+            ConfettiExtension,
+            AuthenticationFormExtension,
+            GTH_FormExtension,
+            FeedbackExtension,
+          ],
+          stylesheet: "https://yannicksegaar.github.io/VF-extensions/chat-widget-custom.css", // link to your hosted stylesheet
+        },
+      }).then(() => {
+        window.voiceflow.chat.proactive.clear(); // clear all previous messages
 
-            // Delay the first proactive message
-            setTimeout(function() {
-              window.voiceflow.chat.proactive.push(
-                { type: 'text', payload: { message: "Aloha! Want to find the perfect tour? 🌺" } }
-              );
-            }, 2000); // milliseconds delay for the first message adjust as needed
+        // Delay the first proactive message
+        setTimeout(function() {
+          window.voiceflow.chat.proactive.push(
+            { type: 'text', payload: { message: "Aloha! 🌺" } }
+          );
+        }, 2000); // milliseconds delay for the first message adjust as needed
 
-            // Delay the second proactive message
-            setTimeout(function() {
-              window.voiceflow.chat.proactive.push(
-                { type: 'text', payload: { message: "I can help you! 😊" } }
-              );
-            }, 3500); // Additional milliseconds delay for the second message adjust as needed
+        // Delay the second proactive message
+        setTimeout(function() {
+          window.voiceflow.chat.proactive.push(
+            { type: 'text', payload: { message: "Looking for the perfect tour? 😊" } }
+          );
+        }, 4500); // Additional milliseconds delay for the second message adjust as needed
 
-            // Delay opening the chat window to ensure the proactive messages are loaded
-            setTimeout(function() {
-              window.voiceflow.chat.open();
-            }, 4000); // Adjust this delay if needed to open the chat after messages
-          });
-        };
-        v.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
-        v.type = 'text/javascript';
-        s.parentNode.insertBefore(v, s);
-      })(document, 'script');
-    </script>
-  </body>
-</html>
+        // Delay opening the chat window to ensure the proactive messages are loaded
+        setTimeout(function() {
+          window.voiceflow.chat.open();
+        }, 6500); // Adjust this delay if needed to open the chat after messages
+      });
+    };
+    v.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
+    v.type = 'text/javascript';
+    s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+
