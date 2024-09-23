@@ -915,7 +915,7 @@ export const GTH_FeedbackExtension = {
         }
       </style>
       <div class="vfrc-feedback">
-        <div class="vfrc-feedback--description">Provide feedback</div>
+        <div class="vfrc-feedback--description">Was this answer helpful?</div>
         <div class="vfrc-feedback--buttons">
           <button class="vfrc-feedback--button" data-feedback="1">${SVG_Thumb}</button>
           <button class="vfrc-feedback--button" data-feedback="0">${SVG_Thumb}</button>
