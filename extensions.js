@@ -695,19 +695,19 @@ export const GTH_FormExtension = {
             /* General Styling */
             form {
               font-family: "Montserrat", sans-serif;
-              width: 100%; /* Full width of the container */
-              padding: 10px; /* Reduced padding */
+              width: 100%;
+              padding: 10px;
               background-color: #f9f9f9;
               box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
               border-radius: 5px;
-              margin: 0; /* Ensure no extra margin */
+              margin: 0;
             }
             label {
-              font-size: 0.9em; /* Smaller font size */
+              font-size: 0.9em;
               color: #444;
               margin-bottom: 5px;
               display: block;
-              width: 100%; /* Ensure labels stretch the full width */
+              width: 100%;
             }
             .required::after {
               content: ' *';
@@ -716,46 +716,46 @@ export const GTH_FormExtension = {
             input[type="text"], input[type="email"], input[type="tel"], select, textarea {
               width: 100%;
               border: 1px solid #ccc;
-              padding: 8px; /* Reduced padding */
-              margin-bottom: 10px; /* Less space between elements */
-              font-size: 0.9em; /* Smaller font */
+              padding: 8px;
+              margin-bottom: 10px;
+              font-size: 0.9em;
               border-radius: 3px;
               box-sizing: border-box;
-              color: #000; /* Set text color to black when input is entered */
+              color: #000;
             }
             input::placeholder, textarea::placeholder, select option[value=""] {
-              color: #bfbfbf; /* Placeholder text color */
+              color: #bfbfbf;
             }
             select {
-              color: #000; /* Ensure selected text matches other fields */
+              color: #000;
             }
             select option {
-              color: #000; /* Make sure options are black, but placeholder grey */
+              color: #000;
             }
             textarea {
               width: 100%;
-              height: 80px; /* Reduced height */
-              color: #000; /* Text entered in the textarea is black */
+              height: 120px; /* Adjust the height here */
+              font-size: 0.85em; /* Adjust the font size here */
+              color: #000;
             }
             input[type="submit"] {
               background-color: #ff6900;
               border: none;
               color: white;
-              padding: 10px 20px; /* Reduced padding for smaller button */
+              padding: 10px 20px;
               border-radius: 12px;
-              font-size: 0.9em; /* Smaller font size */
-              font-weight: bold; /* Bold text */
-              text-transform: uppercase; /* Uppercase text */
+              font-size: 0.9em;
+              font-weight: bold;
+              text-transform: uppercase;
               cursor: pointer;
-              background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
               background-size: cover;
               background-position: center;
-              background-repeat: no-repeat; /* Ensure no repeating */
+              background-repeat: no-repeat;
               width: 100%;
               transition: background-color 0.3s ease;
             }
             input[type="submit"]:hover {
-              background-color: #042d62; /* Blue color on hover */
+              background-color: #042d62;
             }
             .invalid {
               border-color: red;
@@ -763,7 +763,7 @@ export const GTH_FormExtension = {
             /* Responsive Styling */
             @media (max-width: 768px) {
               form {
-                width: 100%; /* Ensure it scales on smaller screens */
+                width: 100%;
               }
               input[type="submit"] {
                 font-size: 1em;
@@ -800,8 +800,8 @@ export const GTH_FormExtension = {
           </div>
 
           <div class="form-row">
-            <label for="message">Message</label>
-            <textarea class="message" name="message" placeholder="Message"></textarea>
+            <label for="message" class="required">Message</label>
+            <textarea class="message" name="message" placeholder="Message" required></textarea>
           </div>
 
           <input type="submit" class="submit" value="Submit">
@@ -820,12 +820,14 @@ export const GTH_FormExtension = {
         !name.checkValidity() ||
         !phone.checkValidity() ||
         !email.checkValidity() ||
-        !services.checkValidity()
+        !services.checkValidity() ||
+        !message.checkValidity()
       ) {
         name.classList.add('invalid')
         phone.classList.add('invalid')
         email.classList.add('invalid')
         services.classList.add('invalid')
+        message.classList.add('invalid')
         return
       }
 
@@ -846,6 +848,7 @@ export const GTH_FormExtension = {
     element.appendChild(formContainer)
   },
 }
+
 
 
 // YRS: New collect feedback extension (https://youtu.be/ImklyDQDA40?si=ZETFhyVsMsqZ-VSR)
