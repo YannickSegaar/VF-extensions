@@ -959,9 +959,105 @@ function removePreviousFeedbackElements() {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// YRS: WAITING ANIMATION EXTENSION VAN SHOPIFY VOICEFLOW
+// YRS: GIFTCARD & WAITING ANIMATION EXTENSION VAN SHOPIFY VOICEFLOW
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// This extension displays a gift card with a specified amount and code
+export const GiftCardDisplayExtension = {
+  name: 'GiftCardDisplay',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'ext_giftCardDisplay' ||
+    trace.payload.name === 'ext_giftCardDisplay',
+  render: ({ trace, element }) => {
+    const amount = trace.payload.amount || '20'
+    const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase()
+    const formattedCode = code.match(/.{1,4}/g).join(' ')
+
+    const giftCardContainer = document.createElement('div')
+    giftCardContainer.innerHTML = `
+      <style>
+        .vfrc-message--extension-GiftCardDisplay {
+          background-color: transparent !important;
+          background: none !important;
+        }
+        .gift-card-container {
+          font-family: Arial, sans-serif;
+          max-width: 400px;
+          margin: 0 auto;
+          padding: 20px;
+          border: 1px solid #e0e0e0;
+          border-radius: 8px;
+          background-color: #fff;
+          text-align: center;
+          position: relative;
+        }
+        .gift-card-image {
+          width: 100%;
+          max-width: 400px;
+          border-radius: 8px;
+          position: relative;
+        }
+        .gift-card-amount {
+          width: 100%;
+          max-width: 350px;
+          font-size: 50px;
+          font-weight: bold;
+          color: #fff;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .gift-card-code {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 10px;
+          background-color: none;
+          padding: 10px;
+          border-radius: 4px;
+          display: inline-block;
+        }
+        .copy-button {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 16px;
+          color: #CF0A2C !important;
+          background-color: #fff !important;
+          border: 1px solid #CF0A2C !important;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .copy-button:hover {
+          background-color: #CF0A2C !important;
+          color: #fff !important;
+        }
+      </style>
+      <div class="gift-card-container">
+      <div class="gift-card-image">
+        <img src="https://s3.amazonaws.com/com.voiceflow.studio/share/card/card.jpg" alt="Gift Card" class="gift-card-image">
+        <div class="gift-card-amount">$${amount}</div>
+        </div>
+        <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
+        <button class="copy-button" id="copy-button">Copy Code</button>
+      </div>
+    `
+
+    const copyButton = giftCardContainer.querySelector('#copy-button')
+    const giftCardCode = giftCardContainer.querySelector('#gift-card-code')
+
+    copyButton.addEventListener('click', () => {
+      navigator.clipboard.writeText(giftCardCode.textContent).then(() => {
+        alert('Gift card code copied to clipboard!')
+      })
+    })
+
+    element.appendChild(giftCardContainer)
+  },
+}
 
 // This extension shows a waiting animation with customizable text and delay
 // Also checking for the vf_done value to stop/hide the animation if it's true
@@ -1058,3 +1154,6 @@ export const WaitingAnimationExtension = {
     }, delay)
   },
 }
+
+// YRS: GIFT CARD EXTENSION
+
