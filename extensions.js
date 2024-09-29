@@ -1038,7 +1038,7 @@ export const GiftCardDisplayExtension = {
       </style>
       <div class="gift-card-container">
       <div class="gift-card-image">
-        <img src="https://s3.amazonaws.com/com.voiceflow.studio/share/card/card.jpg" alt="Gift Card" class="gift-card-image">
+        <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
         <div class="gift-card-amount">$${amount}</div>
         </div>
         <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
@@ -1155,5 +1155,5 @@ export const WaitingAnimationExtension = {
   },
 }
 
-// YRS: GIFT CARD EXTENSION
+
 
