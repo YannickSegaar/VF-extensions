@@ -9432,7 +9432,28 @@
   <style id="nitro-preloader">
    .nitro-offscreen { display: none !important; }
   </style>
- 
+      <style>
+        body {
+          background-color: #f9f9f9;
+        }
+        #flat-chat {
+          width: 100vw;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        #confetti-canvas {
+          position: fixed;
+          z-index: 999;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          pointer-events: none;
+        }
+      </style>
+   </head>
  <body>
  <canvas id="confetti-canvas"></canvas>
  <div id="flat-chat"></div>
@@ -9517,7 +9538,5 @@
      s.parentNode.insertBefore(v, s);
    })(document, 'script');
  </script>
- 
-
 </body>
 </html>

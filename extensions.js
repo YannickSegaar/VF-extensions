@@ -971,11 +971,12 @@ export const GiftCardDisplayExtension = {
     trace.type === 'ext_giftCardDisplay' ||
     trace.payload.name === 'ext_giftCardDisplay',
   render: ({ trace, element }) => {
-    const amount = trace.payload.amount || '20'
-    const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase()
-    const formattedCode = code.match(/.{1,4}/g).join(' ')
+    const title = trace.payload.title || 'Waikiki Turtle Canyon Snorkel Tour';
+    const amount = trace.payload.amount || '20';
+    const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase();
+    const formattedCode = code.match(/.{1,4}/g).join(' ');
 
-    const giftCardContainer = document.createElement('div')
+    const giftCardContainer = document.createElement('div');
     giftCardContainer.innerHTML = `
       <style>
         .vfrc-message--extension-GiftCardDisplay {
@@ -992,6 +993,11 @@ export const GiftCardDisplayExtension = {
           background-color: #fff;
           text-align: center;
           position: relative;
+        }
+        .gift-card-title {
+          font-size: 1.2em;
+          font-weight: bold;
+          margin-bottom: 10px;
         }
         .gift-card-image {
           width: 100%;
@@ -1011,6 +1017,16 @@ export const GiftCardDisplayExtension = {
           transform: translate(-50%, -50%);
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+        .gift-card-discount {
+          font-size: 20px;
+          font-weight: bold;
+          color: #fff;
+          position: absolute;
+          top: 65%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
         .gift-card-code {
           font-size: 18px;
           font-weight: bold;
@@ -1020,7 +1036,7 @@ export const GiftCardDisplayExtension = {
           border-radius: 4px;
           display: inline-block;
         }
-        .copy-button {
+        .copy-button, .book-button {
           display: inline-block;
           padding: 10px 20px;
           font-size: 16px;
@@ -1030,34 +1046,46 @@ export const GiftCardDisplayExtension = {
           border-radius: 4px;
           cursor: pointer;
           transition: background-color 0.3s ease;
+          margin-top: 10px;
+          margin-right: 5px;
         }
-        .copy-button:hover {
+        .copy-button:hover, .book-button:hover {
           background-color: #CF0A2C !important;
           color: #fff !important;
         }
       </style>
       <div class="gift-card-container">
-      <div class="gift-card-image">
-        <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
-        <div class="gift-card-amount">$${amount}</div>
+        <div class="gift-card-title">${title}</div>
+        <div class="gift-card-image">
+          <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
+          <div class="gift-card-amount">$${amount}</div>
+          <div class="gift-card-discount">DISCOUNT</div>
         </div>
         <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
         <button class="copy-button" id="copy-button">Copy Code</button>
+        <button class="book-button" id="book-button">Book Tour</button>
       </div>
-    `
+    `;
 
-    const copyButton = giftCardContainer.querySelector('#copy-button')
-    const giftCardCode = giftCardContainer.querySelector('#gift-card-code')
+    const copyButton = giftCardContainer.querySelector('#copy-button');
+    const giftCardCode = giftCardContainer.querySelector('#gift-card-code');
 
     copyButton.addEventListener('click', () => {
       navigator.clipboard.writeText(giftCardCode.textContent).then(() => {
-        alert('Gift card code copied to clipboard!')
-      })
-    })
+        alert('Gift card code copied to clipboard!');
+      });
+    });
 
-    element.appendChild(giftCardContainer)
+    const bookButton = giftCardContainer.querySelector('#book-button');
+    bookButton.addEventListener('click', () => {
+      // Trigger the next message path in Voiceflow
+      window.voiceflow.chat.trigger('bookTourPath');
+    });
+
+    element.appendChild(giftCardContainer);
   },
-}
+};
+
 
 // This extension shows a waiting animation with customizable text and delay
 // Also checking for the vf_done value to stop/hide the animation if it's true
