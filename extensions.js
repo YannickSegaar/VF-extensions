@@ -1039,16 +1039,18 @@ export const GiftCardDisplayExtension = {
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .discount-label {
-          font-size: 1.5em; /* Updated font size for "DISCOUNT CODE" */
+          font-size: 1.2em; /* Updated font size for "DISCOUNT CODE" */
           font-weight: bold;
           margin-top: 10px;
         }
         .gift-card-code {
-          font-size: 20px; /* Updated font size for the unique gift code */
+          font-size: 14px; /* Updated font size for the unique gift code */
           font-weight: bold;
           margin-bottom: 10px;
+          color: #ffffff;/* YRS: White color unique gift code */
           padding: 15px; /* Added padding to make the container larger */
-          background-color: #f0f0f0; /* Light gray background to make it pop */
+          background-color: #042d62;
+          background-image: url('${borderImageUrl}');
           border-radius: 6px; /* Slight rounding for better aesthetics */
           display: inline-block;
         }
