@@ -975,7 +975,7 @@ export const GiftCardDisplayExtension = {
     const amount = trace.payload.amount || '20';
     const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase();
     const formattedCode = code.match(/.{1,4}/g).join(' ');
-    const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg'; // Replace with the actual logo URL
+    const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg';
     const backgroundImageUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png';
 
     const giftCardContainer = document.createElement('div');
@@ -992,15 +992,15 @@ export const GiftCardDisplayExtension = {
           padding: 20px;
           border: 1px solid #e0e0e0;
           border-radius: 8px;
-          background-color: #042d62; /* Blue background */
-          background-image: url('${backgroundImageUrl}');
-          background-size: cover; /* Adjust this if needed to ensure the image is visible */
-          background-position: center; /* Ensure the image is positioned properly */
-          background-repeat: no-repeat; /* Make sure the image doesn’t repeat if it’s not desired */
-          background-blend-mode: multiply; /* Blend the color with the image */
+          background-color: #042d62 !important; /* Blue background with high priority */
+          background-image: url('${backgroundImageUrl}') !important;
+          background-size: cover !important; /* Cover the entire container */
+          background-position: center !important; /* Ensure the image is positioned properly */
+          background-repeat: no-repeat !important; /* No repeating background */
           text-align: center;
           position: relative;
           color: #fff; /* Set text color to white globally */
+          min-height: 600px; /* Ensure sufficient height */
         }
         .gift-card-logo {
           width: 150px;
