@@ -998,7 +998,7 @@ export const GiftCardDisplayExtension = {
           background-color: #042d62; /* Blue background */
           background-image: url('${backgroundImageUrl}');
           background-size: contain; /* Contain to see full pattern */
-          background-position: center;
+          background-position: top;
           background-repeat: no-repeat;
         }
         .gift-card-logo {
