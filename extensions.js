@@ -975,8 +975,8 @@ export const GiftCardDisplayExtension = {
     const amount = trace.payload.amount || '20';
     const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase();
     const formattedCode = code.match(/.{1,4}/g).join(' ');
-    const logoUrl = 'YOUR_LOGO_IMAGE_URL'; // Replace with the actual logo URL
-    const faviconUrl = 'YOUR_FAVICON_IMAGE_URL'; // Replace with the actual favicon URL
+    const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg'; // Replace with the actual logo URL
+    const faviconUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/site-logo-white-e1714962363418.png'; // Replace with the actual favicon URL
 
     const giftCardContainer = document.createElement('div');
     giftCardContainer.innerHTML = `
