@@ -993,9 +993,11 @@ export const GiftCardDisplayExtension = {
           border: 1px solid #e0e0e0;
           border-radius: 8px;
           background-color: #042d62; /* Blue background */
-          background-image: url('${backgroundImageUrl}');
-          background-size: cover;
-          background-position: center;
+          background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+          background-size: cover; /* Adjust this if needed to ensure the image is visible */
+          background-position: center; /* Ensure the image is positioned properly */
+          background-repeat: no-repeat; /* Make sure the image doesn’t repeat if it’s not desired */
+          background-blend-mode: multiply; /* Blend the color with the image */
           text-align: center;
           position: relative;
           color: #fff; /* Set text color to white globally */
