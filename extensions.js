@@ -992,15 +992,14 @@ export const GiftCardDisplayExtension = {
           padding: 20px;
           border: 1px solid #e0e0e0;
           border-radius: 8px;
-          background-color: #042d62 !important; /* Blue background with high priority */
-          background-image: url('${backgroundImageUrl}') !important;
-          background-size: cover !important; /* Cover the entire container */
-          background-position: center !important; /* Ensure the image is positioned properly */
-          background-repeat: no-repeat !important; /* No repeating background */
           text-align: center;
           position: relative;
           color: #fff; /* Set text color to white globally */
-          min-height: 600px; /* Ensure sufficient height */
+          background-color: #042d62; /* Blue background */
+          background-image: url('${backgroundImageUrl}');
+          background-size: contain; /* Contain to see full pattern */
+          background-position: center;
+          background-repeat: no-repeat;
         }
         .gift-card-logo {
           width: 150px;
@@ -1101,6 +1100,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
