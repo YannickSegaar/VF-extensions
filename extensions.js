@@ -991,49 +991,23 @@ export const GiftCardDisplayExtension = {
           position: relative;
           max-width: 420px;
           margin: 0 auto;
+          padding: 15px; /* Adjust to add spacing between border and content */
+          background-color: #042d62;
+          background-image: url('${borderImageUrl}');
+          background-size: cover;
+          background-repeat: repeat;
+          border-radius: 12px;
         }
         .gift-card-container {
           font-family: "Montserrat", sans-serif;
           max-width: 400px;
-          margin: 20px auto;
+          margin: 0 auto;
           padding: 20px;
           border-radius: 8px;
           background-color: #fff;
           text-align: center;
           position: relative;
           z-index: 2;
-        }
-        .border-top, .border-bottom, .border-left, .border-right {
-          position: absolute;
-          background-color: #042d62;
-          background-image: url('${borderImageUrl}');
-          background-size: contain;
-          background-repeat: repeat;
-          z-index: 1;
-        }
-        .border-top, .border-bottom {
-          height: 10px; /* Adjust the height to control border thickness */
-          left: 0;
-          right: 0;
-        }
-        .border-left, .border-right {
-          width: 10px; /* Adjust the width to control border thickness */
-          top: 0;
-          bottom: 0;
-        }
-        .border-top {
-          top: 0;
-          border-radius: 8px 8px 0 0;
-        }
-        .border-bottom {
-          bottom: 0;
-          border-radius: 0 0 8px 8px;
-        }
-        .border-left {
-          left: 0;
-        }
-        .border-right {
-          right: 0;
         }
         .gift-card-logo {
           width: 150px;
@@ -1103,10 +1077,6 @@ export const GiftCardDisplayExtension = {
         }
       </style>
       <div class="gift-card-border-wrapper">
-        <div class="border-top"></div>
-        <div class="border-bottom"></div>
-        <div class="border-left"></div>
-        <div class="border-right"></div>
         <div class="gift-card-container">
           <img src="${logoUrl}" alt="Company Logo" class="gift-card-logo">
           <div class="gift-card-title">${title}</div>
@@ -1140,6 +1110,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
