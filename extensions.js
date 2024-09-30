@@ -1065,6 +1065,7 @@ export const GiftCardDisplayExtension = {
           right: 10px;
           width: 40px;
           height: 40px;
+          margin-bottom: 10px; /* Add margin to create space between button and favicon */
         }
       </style>
       <div class="gift-card-container">
@@ -1100,6 +1101,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
