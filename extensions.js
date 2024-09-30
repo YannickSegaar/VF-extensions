@@ -1107,13 +1107,15 @@ export const GiftCardDisplayExtension = {
     const bookButton = giftCardContainer.querySelector('#book-button');
     bookButton.addEventListener('click', () => {
       // Trigger the next message path in Voiceflow
-      window.voiceflow.chat.trigger('bookTourPath');
+      window.voiceflow.chat.interact({
+        type: 'bookTour', // Custom action type
+        payload: { bookTour: 1 }, // Payload to indicate that the button was clicked
+      });
     });
 
     element.appendChild(giftCardContainer);
   },
 };
-
 
 
 
