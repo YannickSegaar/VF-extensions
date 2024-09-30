@@ -740,6 +740,8 @@ export const GTH_FormExtension = {
             }
             input[type="submit"] {
               background-color: #ff6900;
+              background-color: #ff6900;
+              background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
               border: none;
               color: white;
               padding: 10px 20px;
@@ -997,9 +999,9 @@ export const GiftCardDisplayExtension = {
           color: #fff; /* Set text color to white globally */
           background-color: #042d62; /* Blue background */
           background-image: url('${backgroundImageUrl}');
-          background-size: contain; /* Contain to see full pattern */
-          background-position: top;
-          background-repeat: no-repeat;
+          background-size: cover; /* Cover the entire container */
+          background-position: top; /* Make sure the pattern starts from the top */
+          background-repeat: repeat; /* Repeat the pattern to cover the entire container */
         }
         .gift-card-logo {
           width: 150px;
@@ -1062,10 +1064,12 @@ export const GiftCardDisplayExtension = {
           transition: background-color 0.3s ease;
           margin-top: 10px;
           background-color: #ff6900; /* Orange background */
+          background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
         }
         .button:hover {
-          background-color: #ffffff; /* White hover for visibility against blue background */
-          color: #042d62; /* Text color to match background */
+          background-color: #042d62; /* White hover for visibility against blue background */
+          background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+          color: #ffffff; /* Text color to match background */
         }
       </style>
       <div class="gift-card-container">
@@ -1100,6 +1104,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
