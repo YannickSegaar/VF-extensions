@@ -1010,7 +1010,7 @@ export const GiftCardDisplayExtension = {
           z-index: 2;
         }
         .gift-card-logo {
-          width: 100px;
+          width: 150px;
           margin: 0 auto 10px;
           display: block;
         }
@@ -1039,12 +1039,12 @@ export const GiftCardDisplayExtension = {
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .discount-label {
-          font-size: 1.2em;
+          font-size: 1.0em;
           font-weight: bold;
           margin-top: 10px;
         }
         .gift-card-code {
-          font-size: 18px;
+          font-size: 14px;
           font-weight: bold;
           margin-bottom: 10px;
           background-color: none;
