@@ -1060,7 +1060,9 @@ export const GiftCardDisplayExtension = {
           background-color: #042d62;
         }
         .gift-card-favicon {
-          margin-top: 20px;
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
           width: 40px;
           height: 40px;
         }
@@ -1098,6 +1100,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
