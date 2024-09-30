@@ -976,7 +976,6 @@ export const GiftCardDisplayExtension = {
     const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase();
     const formattedCode = code.match(/.{1,4}/g).join(' ');
     const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg'; // Replace with the actual logo URL
-    const faviconUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg'; // Replace with the actual favicon URL
 
     const giftCardContainer = document.createElement('div');
     giftCardContainer.innerHTML = `
@@ -1059,14 +1058,6 @@ export const GiftCardDisplayExtension = {
         .button:hover {
           background-color: #042d62;
         }
-        .gift-card-favicon {
-          position: absolute;
-          bottom: 10px;
-          right: 10px;
-          width: 40px;
-          height: 40px;
-          margin-bottom: 10px; /* Add margin to create space between button and favicon */
-        }
       </style>
       <div class="gift-card-container">
         <img src="${logoUrl}" alt="Company Logo" class="gift-card-logo">
@@ -1079,7 +1070,6 @@ export const GiftCardDisplayExtension = {
         <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
         <button class="button copy-button" id="copy-button">Copy Code</button>
         <button class="button book-button" id="book-button">Book Tour</button>
-        <img src="${faviconUrl}" alt="Favicon" class="gift-card-favicon">
       </div>
     `;
 
@@ -1101,6 +1091,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
