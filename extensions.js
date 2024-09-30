@@ -991,7 +991,7 @@ export const GiftCardDisplayExtension = {
           position: relative;
           max-width: 420px;
           margin: 0 auto;
-          padding: 10px; /* Adjust this value to control border thickness */
+          padding: 20px; /* Adjust this value to control border thickness */
           background-color: #042d62;
           background-image: url('${borderImageUrl}');
           background-size: contain; /* Adjust this to make sure the pattern appears properly */
@@ -1010,7 +1010,7 @@ export const GiftCardDisplayExtension = {
           z-index: 2;
         }
         .gift-card-logo {
-          width: 150px;
+          width: 100px;
           margin: 0 auto 10px;
           display: block;
         }
