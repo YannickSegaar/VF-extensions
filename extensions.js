@@ -984,7 +984,7 @@ export const GiftCardDisplayExtension = {
           background: none !important;
         }
         .gift-card-container {
-          font-family: Arial, sans-serif;
+          font-family: "Montserrat", sans-serif;
           max-width: 400px;
           margin: 0 auto;
           padding: 20px;
@@ -1012,7 +1012,7 @@ export const GiftCardDisplayExtension = {
           font-weight: bold;
           color: #fff;
           position: absolute;
-          top: 50%;
+          top: 45%;
           left: 50%;
           transform: translate(-50%, -50%);
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -1022,7 +1022,7 @@ export const GiftCardDisplayExtension = {
           font-weight: bold;
           color: #fff;
           position: absolute;
-          top: 65%;
+          top: 60%;
           left: 50%;
           transform: translate(-50%, -50%);
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -1036,22 +1036,25 @@ export const GiftCardDisplayExtension = {
           border-radius: 4px;
           display: inline-block;
         }
-        .copy-button, .book-button {
-          display: inline-block;
+        .button {
+          background-color: #ff6900;
+          border: none;
+          color: white;
           padding: 10px 20px;
-          font-size: 16px;
-          color: #CF0A2C !important;
-          background-color: #fff !important;
-          border: 1px solid #CF0A2C !important;
-          border-radius: 4px;
+          border-radius: 12px;
+          font-size: 0.9em;
+          font-weight: bold;
+          text-transform: uppercase;
           cursor: pointer;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          width: 100%;
           transition: background-color 0.3s ease;
           margin-top: 10px;
-          margin-right: 5px;
         }
-        .copy-button:hover, .book-button:hover {
-          background-color: #CF0A2C !important;
-          color: #fff !important;
+        .button:hover {
+          background-color: #042d62;
         }
       </style>
       <div class="gift-card-container">
@@ -1062,8 +1065,8 @@ export const GiftCardDisplayExtension = {
           <div class="gift-card-discount">DISCOUNT</div>
         </div>
         <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
-        <button class="copy-button" id="copy-button">Copy Code</button>
-        <button class="book-button" id="book-button">Book Tour</button>
+        <button class="button copy-button" id="copy-button">Copy Code</button>
+        <button class="button book-button" id="book-button">Book Tour</button>
       </div>
     `;
 
@@ -1085,6 +1088,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 // This extension shows a waiting animation with customizable text and delay
