@@ -977,8 +977,7 @@ export const GiftCardDisplayExtension = {
     const amount = trace.payload.amount || '20';
     const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase();
     const formattedCode = code.match(/.{1,4}/g).join(' ');
-    const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg';
-    const backgroundImageUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png';
+    const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg'; // Replace with the actual logo URL
 
     const giftCardContainer = document.createElement('div');
     giftCardContainer.innerHTML = `
@@ -994,14 +993,9 @@ export const GiftCardDisplayExtension = {
           padding: 20px;
           border: 1px solid #e0e0e0;
           border-radius: 8px;
+          background-color: #fff;
           text-align: center;
           position: relative;
-          color: #fff; /* Set text color to white globally */
-          background-color: #042d62; /* Blue background */
-          background-image: url('${backgroundImageUrl}');
-          background-size: cover; /* Cover the entire container */
-          background-position: top; /* Make sure the pattern starts from the top */
-          background-repeat: repeat; /* Repeat the pattern to cover the entire container */
         }
         .gift-card-logo {
           width: 150px;
@@ -1012,7 +1006,7 @@ export const GiftCardDisplayExtension = {
           font-size: 1.1em;
           font-weight: bold;
           margin-bottom: 10px;
-          color: #fff; /* Title text color changed to white */
+          color: #000;
         }
         .gift-card-image {
           width: 100%;
@@ -1036,7 +1030,6 @@ export const GiftCardDisplayExtension = {
           font-size: 1.2em;
           font-weight: bold;
           margin-top: 10px;
-          color: #fff; /* Discount label text color changed to white */
         }
         .gift-card-code {
           font-size: 18px;
@@ -1046,7 +1039,6 @@ export const GiftCardDisplayExtension = {
           padding: 10px;
           border-radius: 4px;
           display: inline-block;
-          color: #fff; /* Gift code text color changed to white */
         }
         .button {
           border: none;
@@ -1067,9 +1059,9 @@ export const GiftCardDisplayExtension = {
           background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
         }
         .button:hover {
-          background-color: #042d62; /* White hover for visibility against blue background */
+          background-color: #042d62;
+          color: #ffffff;
           background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
-          color: #ffffff; /* Text color to match background */
         }
       </style>
       <div class="gift-card-container">
@@ -1104,6 +1096,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
