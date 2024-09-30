@@ -995,9 +995,10 @@ export const GiftCardDisplayExtension = {
           position: relative;
         }
         .gift-card-title {
-          font-size: 1.5em; /* Adjusted font size to reduce title lines */
+          font-size: 1.3em; /* Adjusted font size to reduce title lines */
           font-weight: bold;
           margin-bottom: 10px;
+          color: #042d62;
         }
         .gift-card-image {
           width: 100%;
@@ -1032,7 +1033,6 @@ export const GiftCardDisplayExtension = {
           display: inline-block;
         }
         .button {
-          background-color: #ff6900;
           border: none;
           color: white;
           padding: 10px 20px;
@@ -1047,6 +1047,8 @@ export const GiftCardDisplayExtension = {
           width: 100%;
           transition: background-color 0.3s ease;
           margin-top: 10px;
+          background-color: #ff6900; /* Orange background */
+          background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
         }
         .button:hover {
           background-color: #042d62;
