@@ -1039,9 +1039,10 @@ export const GiftCardDisplayExtension = {
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .discount-label {
-          font-size: 1.2em; /* Updated font size for "DISCOUNT CODE" */
+          font-size: 1.0em; /* Updated font size for "DISCOUNT CODE" */
           font-weight: bold;
           margin-top: 10px;
+          margin-bottom: 10px;
         }
         .gift-card-code {
           font-size: 14px; /* Updated font size for the unique gift code */
