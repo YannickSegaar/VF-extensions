@@ -991,10 +991,10 @@ export const GiftCardDisplayExtension = {
           position: relative;
           max-width: 420px;
           margin: 0 auto;
-          padding: 15px; /* Adjust to add spacing between border and content */
+          padding: 20px; /* Adjust this value to control border thickness */
           background-color: #042d62;
           background-image: url('${borderImageUrl}');
-          background-size: cover;
+          background-size: contain; /* Adjust this to make sure the pattern appears properly */
           background-repeat: repeat;
           border-radius: 12px;
         }
@@ -1110,6 +1110,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
