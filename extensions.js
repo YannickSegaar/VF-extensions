@@ -987,30 +987,49 @@ export const GiftCardDisplayExtension = {
           background-color: transparent !important;
           background: none !important;
         }
+        .gift-card-border {
+          position: relative;
+          max-width: 400px;
+          margin: 0 auto;
+        }
         .gift-card-container {
           font-family: "Montserrat", sans-serif;
-          max-width: 400px;
-          margin: 20px auto;
+          margin: 20px;
           padding: 20px;
-          position: relative;
-          text-align: center;
-          background-color: #fff;
           border-radius: 8px;
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+          background-color: #fff;
+          text-align: center;
+          position: relative;
+          z-index: 1;
         }
-        .gift-card-container::before {
-          content: '';
+        .border-top, .border-bottom, .border-left, .border-right {
           position: absolute;
-          top: -15px;
-          bottom: -15px;
-          left: -15px;
-          right: -15px;
-          border: 15px solid transparent; /* Adjust this value to control border thickness */
-          border-image-source: url('${borderImageUrl}');
-          border-image-slice: 30;
-          border-image-repeat: round;
-          border-radius: 12px;
-          pointer-events: none;
+          background-color: #042d62;
+          background-image: url('${borderImageUrl}');
+          background-size: contain;
+          background-repeat: repeat;
+        }
+        .border-top, .border-bottom {
+          height: 10px; /* Adjust the height to control border thickness */
+          left: 0;
+          right: 0;
+        }
+        .border-left, .border-right {
+          width: 10px; /* Adjust the width to control border thickness */
+          top: 0;
+          bottom: 0;
+        }
+        .border-top {
+          top: -15px; /* Position the border outside the container */
+        }
+        .border-bottom {
+          bottom: -15px; /* Position the border outside the container */
+        }
+        .border-left {
+          left: -15px; /* Position the border outside the container */
+        }
+        .border-right {
+          right: -15px; /* Position the border outside the container */
         }
         .gift-card-logo {
           width: 150px;
@@ -1079,17 +1098,23 @@ export const GiftCardDisplayExtension = {
           background-image: url('${borderImageUrl}');
         }
       </style>
-      <div class="gift-card-container">
-        <img src="${logoUrl}" alt="Company Logo" class="gift-card-logo">
-        <div class="gift-card-title">${title}</div>
-        <div class="gift-card-image">
-          <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
-          <div class="gift-card-amount">$${amount}</div>
+      <div class="gift-card-border">
+        <div class="border-top"></div>
+        <div class="border-bottom"></div>
+        <div class="border-left"></div>
+        <div class="border-right"></div>
+        <div class="gift-card-container">
+          <img src="${logoUrl}" alt="Company Logo" class="gift-card-logo">
+          <div class="gift-card-title">${title}</div>
+          <div class="gift-card-image">
+            <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
+            <div class="gift-card-amount">$${amount}</div>
+          </div>
+          <div class="discount-label">DISCOUNT CODE</div>
+          <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
+          <button class="button copy-button" id="copy-button">Copy Code</button>
+          <button class="button book-button" id="book-button">Book Tour</button>
         </div>
-        <div class="discount-label">DISCOUNT CODE</div>
-        <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
-        <button class="button copy-button" id="copy-button">Copy Code</button>
-        <button class="button book-button" id="book-button">Book Tour</button>
       </div>
     `;
 
@@ -1111,6 +1136,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
