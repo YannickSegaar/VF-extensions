@@ -987,20 +987,53 @@ export const GiftCardDisplayExtension = {
           background-color: transparent !important;
           background: none !important;
         }
+        .gift-card-border-wrapper {
+          position: relative;
+          max-width: 420px;
+          margin: 0 auto;
+        }
         .gift-card-container {
           font-family: "Montserrat", sans-serif;
           max-width: 400px;
-          margin: 0 auto;
+          margin: 20px auto;
           padding: 20px;
-          border: 15px solid transparent; /* Default border width, adjust as needed */
           border-radius: 8px;
           background-color: #fff;
           text-align: center;
           position: relative;
-          border-image-source: url('${borderImageUrl}');
-          border-image-slice: 30; /* Adjust this to ensure the pattern fits well on the borders */
-          border-image-width: 15px; /* Matches the border width */
-          border-image-repeat: round; /* Ensures the pattern repeats across the border */
+          z-index: 2;
+        }
+        .border-top, .border-bottom, .border-left, .border-right {
+          position: absolute;
+          background-color: #042d62;
+          background-image: url('${borderImageUrl}');
+          background-size: contain;
+          background-repeat: repeat;
+          z-index: 1;
+        }
+        .border-top, .border-bottom {
+          height: 10px; /* Adjust the height to control border thickness */
+          left: 0;
+          right: 0;
+        }
+        .border-left, .border-right {
+          width: 10px; /* Adjust the width to control border thickness */
+          top: 0;
+          bottom: 0;
+        }
+        .border-top {
+          top: 0;
+          border-radius: 8px 8px 0 0;
+        }
+        .border-bottom {
+          bottom: 0;
+          border-radius: 0 0 8px 8px;
+        }
+        .border-left {
+          left: 0;
+        }
+        .border-right {
+          right: 0;
         }
         .gift-card-logo {
           width: 150px;
@@ -1069,17 +1102,23 @@ export const GiftCardDisplayExtension = {
           background-image: url('${borderImageUrl}');
         }
       </style>
-      <div class="gift-card-container">
-        <img src="${logoUrl}" alt="Company Logo" class="gift-card-logo">
-        <div class="gift-card-title">${title}</div>
-        <div class="gift-card-image">
-          <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
-          <div class="gift-card-amount">$${amount}</div>
+      <div class="gift-card-border-wrapper">
+        <div class="border-top"></div>
+        <div class="border-bottom"></div>
+        <div class="border-left"></div>
+        <div class="border-right"></div>
+        <div class="gift-card-container">
+          <img src="${logoUrl}" alt="Company Logo" class="gift-card-logo">
+          <div class="gift-card-title">${title}</div>
+          <div class="gift-card-image">
+            <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
+            <div class="gift-card-amount">$${amount}</div>
+          </div>
+          <div class="discount-label">DISCOUNT CODE</div>
+          <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
+          <button class="button copy-button" id="copy-button">Copy Code</button>
+          <button class="button book-button" id="book-button">Book Tour</button>
         </div>
-        <div class="discount-label">DISCOUNT CODE</div>
-        <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
-        <button class="button copy-button" id="copy-button">Copy Code</button>
-        <button class="button book-button" id="book-button">Book Tour</button>
       </div>
     `;
 
@@ -1101,6 +1140,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
