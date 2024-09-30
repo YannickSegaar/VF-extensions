@@ -978,7 +978,6 @@ export const GiftCardDisplayExtension = {
     const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase();
     const formattedCode = code.match(/.{1,4}/g).join(' ');
     const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg';
-
     const borderImageUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png';
 
     const giftCardContainer = document.createElement('div');
@@ -991,17 +990,27 @@ export const GiftCardDisplayExtension = {
         .gift-card-container {
           font-family: "Montserrat", sans-serif;
           max-width: 400px;
-          margin: 0 auto;
+          margin: 20px auto;
           padding: 20px;
-          border: 10px solid; /* Set a default border width (can be adjusted) */
-          border-image-source: url('${borderImageUrl}');
-          border-image-slice: 30; /* Set the amount to slice the border image (adjust to control pattern) */
-          border-image-repeat: stretch; /* Stretch to fit the length of the border */
-          border-image-width: 10px; /* You can change this value to adjust the border thickness */
-          border-radius: 8px;
-          background-color: #fff;
-          text-align: center;
           position: relative;
+          text-align: center;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .gift-card-container::before {
+          content: '';
+          position: absolute;
+          top: -15px;
+          bottom: -15px;
+          left: -15px;
+          right: -15px;
+          border: 15px solid transparent; /* Adjust this value to control border thickness */
+          border-image-source: url('${borderImageUrl}');
+          border-image-slice: 30;
+          border-image-repeat: round;
+          border-radius: 12px;
+          pointer-events: none;
         }
         .gift-card-logo {
           width: 150px;
