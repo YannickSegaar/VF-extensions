@@ -977,7 +977,9 @@ export const GiftCardDisplayExtension = {
     const amount = trace.payload.amount || '20';
     const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase();
     const formattedCode = code.match(/.{1,4}/g).join(' ');
-    const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg'; // Replace with the actual logo URL
+    const logoUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Logo-site.svg';
+
+    const borderImageUrl = 'https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png';
 
     const giftCardContainer = document.createElement('div');
     giftCardContainer.innerHTML = `
@@ -991,7 +993,11 @@ export const GiftCardDisplayExtension = {
           max-width: 400px;
           margin: 0 auto;
           padding: 20px;
-          border: 1px solid #e0e0e0;
+          border: 10px solid; /* Set a default border width (can be adjusted) */
+          border-image-source: url('${borderImageUrl}');
+          border-image-slice: 30; /* Set the amount to slice the border image (adjust to control pattern) */
+          border-image-repeat: stretch; /* Stretch to fit the length of the border */
+          border-image-width: 10px; /* You can change this value to adjust the border thickness */
           border-radius: 8px;
           background-color: #fff;
           text-align: center;
@@ -1056,12 +1062,12 @@ export const GiftCardDisplayExtension = {
           transition: background-color 0.3s ease;
           margin-top: 10px;
           background-color: #ff6900; /* Orange background */
-          background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+          background-image: url('${borderImageUrl}');
         }
         .button:hover {
           background-color: #042d62;
           color: #ffffff;
-          background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+          background-image: url('${borderImageUrl}');
         }
       </style>
       <div class="gift-card-container">
@@ -1096,6 +1102,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
