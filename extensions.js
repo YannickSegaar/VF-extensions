@@ -995,7 +995,7 @@ export const GiftCardDisplayExtension = {
           position: relative;
         }
         .gift-card-title {
-          font-size: 1.2em;
+          font-size: 1.5em; /* Adjusted font size to reduce title lines */
           font-weight: bold;
           margin-bottom: 10px;
         }
@@ -1012,20 +1012,15 @@ export const GiftCardDisplayExtension = {
           font-weight: bold;
           color: #fff;
           position: absolute;
-          top: 45%;
+          top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        .gift-card-discount {
-          font-size: 20px;
+        .discount-label {
+          font-size: 1.2em;
           font-weight: bold;
-          color: #fff;
-          position: absolute;
-          top: 60%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          margin-top: 10px;
         }
         .gift-card-code {
           font-size: 18px;
@@ -1062,8 +1057,8 @@ export const GiftCardDisplayExtension = {
         <div class="gift-card-image">
           <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
           <div class="gift-card-amount">$${amount}</div>
-          <div class="gift-card-discount">DISCOUNT</div>
         </div>
+        <div class="discount-label">DISCOUNT CODE</div>
         <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
         <button class="button copy-button" id="copy-button">Copy Code</button>
         <button class="button book-button" id="book-button">Book Tour</button>
@@ -1088,6 +1083,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
