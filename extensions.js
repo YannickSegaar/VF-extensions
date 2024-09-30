@@ -975,6 +975,8 @@ export const GiftCardDisplayExtension = {
     const amount = trace.payload.amount || '20';
     const code = (trace.payload.code || 'G9FD5FEG8HDC8A94').toUpperCase();
     const formattedCode = code.match(/.{1,4}/g).join(' ');
+    const logoUrl = 'YOUR_LOGO_IMAGE_URL'; // Replace with the actual logo URL
+    const faviconUrl = 'YOUR_FAVICON_IMAGE_URL'; // Replace with the actual favicon URL
 
     const giftCardContainer = document.createElement('div');
     giftCardContainer.innerHTML = `
@@ -994,11 +996,16 @@ export const GiftCardDisplayExtension = {
           text-align: center;
           position: relative;
         }
+        .gift-card-logo {
+          width: 150px;
+          margin: 0 auto 10px;
+          display: block;
+        }
         .gift-card-title {
-          font-size: 1.3em; /* Adjusted font size to reduce title lines */
+          font-size: 1.1em;
           font-weight: bold;
           margin-bottom: 10px;
-          color: #042d62;
+          color: #000;
         }
         .gift-card-image {
           width: 100%;
@@ -1048,13 +1055,20 @@ export const GiftCardDisplayExtension = {
           transition: background-color 0.3s ease;
           margin-top: 10px;
           background-color: #ff6900; /* Orange background */
-          background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
         }
         .button:hover {
           background-color: #042d62;
         }
+        .gift-card-favicon {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          width: 40px;
+          height: 40px;
+        }
       </style>
       <div class="gift-card-container">
+        <img src="${logoUrl}" alt="Company Logo" class="gift-card-logo">
         <div class="gift-card-title">${title}</div>
         <div class="gift-card-image">
           <img src="https://yannicksegaar.github.io/VF-extensions/RomAIx_GTH_Carousel_Photos/Carousel_TurtleSnorkel.jpeg" alt="Gift Card" class="gift-card-image">
@@ -1064,6 +1078,7 @@ export const GiftCardDisplayExtension = {
         <div class="gift-card-code" id="gift-card-code">${formattedCode}</div>
         <button class="button copy-button" id="copy-button">Copy Code</button>
         <button class="button book-button" id="book-button">Book Tour</button>
+        <img src="${faviconUrl}" alt="Favicon" class="gift-card-favicon">
       </div>
     `;
 
@@ -1085,6 +1100,7 @@ export const GiftCardDisplayExtension = {
     element.appendChild(giftCardContainer);
   },
 };
+
 
 
 
