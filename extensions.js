@@ -1146,7 +1146,7 @@ export const WaitingAnimationExtension = {
     window.vf_done = true
     await new Promise((resolve) => setTimeout(resolve, 250))
 
-    const text = trace.payload?.text || 'Please wait...'
+    const text = trace.payload?.text || ''
     const delay = trace.payload?.delay || 3000
 
     const waitingContainer = document.createElement('div')
