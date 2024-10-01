@@ -135,7 +135,7 @@ export const VideoExtension = {
     const videoElement = document.createElement('video')
     const { videoURL, autoplay, controls } = trace.payload
 
-    videoElement.width = 150
+    videoElement.width = 250
     videoElement.height = 200
     videoElement.src = videoURL
 
