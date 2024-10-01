@@ -19,11 +19,11 @@
   position: absolute; /* Position it relative to the header */
   top: 10px; /* Adjust this value for vertical positioning */
   right: 15px; /* Adjust this value for horizontal positioning */
-  width: 12px; /* Adjust for the size of the dot */
-  height: 12px; /* Adjust for the size of the dot */
-  background-color: green; /* Color of the dot */
+  width: 16px; /* Adjust for the size of the dot */
+  height: 16px; /* Adjust for the size of the dot */
+  background-color: #39d353; /* Color of the dot */
   border-radius: 50%; /* Make it a circle */
-  border: 2px solid white; /* Add a border; adjust color and thickness */
+  border: 1px solid white; /* Add a border; adjust color and thickness */
   box-sizing: border-box; /* Include the border in the element's dimensions */
 }
 
