@@ -1180,7 +1180,7 @@ export const WaitingAnimationExtension = {
           width: 20px;
           height: 20px;
           border: 2px solid #fffc;
-          border-top: 2px solid #CF0A2C;
+          border-top: 2px solid #042d62;
           border-radius: 50%;
           animation: spin 1s linear infinite;
         }
