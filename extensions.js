@@ -1252,3 +1252,20 @@ export const DoneAnimationExtension = {
     })
   },
 }
+
+// YRS: INVISIBlE TIMER EXTENSION
+
+export const InvisibleTimerExtension = {
+  name: 'Invisible Timer',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'ext_invisible_timer' || trace.payload.name === 'ext_invisible_timer',
+  render: ({ trace }) => {
+    const { duration = 5 } = trace.payload || {}; // Default to 5 seconds if duration is not provided
+
+    const countdown = setTimeout(() => {
+      window.voiceflow.chat.interact({ type: 'complete' }); // Proceed to the next step after the delay
+      clearTimeout(countdown); // Clear the timeout to avoid memory leaks
+    }, duration * 1000); // Convert seconds to milliseconds
+  },
+};
