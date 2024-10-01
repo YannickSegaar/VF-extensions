@@ -1,15 +1,32 @@
-/* Customize the header */
-.vfrc-header {
-    background-color: #042d62; /* Blue background */
-    background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white; /* White text color for the header */
-    padding: 15px;
-    border-radius: 12px 12px 0 0; /* Rounded corners for the top */
-  }
+
   
+  /* Customize the header */
+.vfrc-header {
+  background-color: #042d62; /* Blue background */
+  background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white; /* White text color for the header */
+  padding: 15px;
+  border-radius: 12px 12px 0 0; /* Rounded corners for the top */
+  position: relative; /* Make the header a positioning reference for the dot */
+}
+
+/* Add the green dot indicator to the header */
+.vfrc-header::after {
+  content: ""; /* No text, just a dot */
+  position: absolute; /* Position it relative to the header */
+  top: 10px; /* Adjust this value for vertical positioning */
+  right: 15px; /* Adjust this value for horizontal positioning */
+  width: 12px; /* Adjust for the size of the dot */
+  height: 12px; /* Adjust for the size of the dot */
+  background-color: green; /* Color of the dot */
+  border-radius: 50%; /* Make it a circle */
+  border: 2px solid white; /* Add a border; adjust color and thickness */
+  box-sizing: border-box; /* Include the border in the element's dimensions */
+}
+
   /* Header Assistant info (e.g., name and description) */
   .vfrc-assistant-info--title {
     font-size: 1.2em;
@@ -112,7 +129,7 @@
   /* Customize the header title to match the "Choose Your Experience" styling */
 .vfrc-header--title {
   font-family: "headline-gothic-atf-rough-n2", sans-serif;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 1.22em;
   color: #ffffff; /* Matching the blue color of your header */

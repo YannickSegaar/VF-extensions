@@ -1,4 +1,13 @@
-              <option value="Pearl Harbor Tours">Pearl Harbor Tours</option>
-              <option value="Luaus Tours">Luaus Tours</option>
-              <option value="Private Tours">Private Tours</option>
-              <option value="General Inquiry">General Inquiry</option>
+YRS: Header styling (voordat "live" dot is toegepast):
+
+/* Customize the header */
+.vfrc-header {
+    background-color: #042d62; /* Blue background */
+    background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* White text color for the header */
+    padding: 15px;
+    border-radius: 12px 12px 0 0; /* Rounded corners for the top */
+  }
