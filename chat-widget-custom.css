@@ -106,3 +106,17 @@
   [class*=" vfrc-message--extension-"] {
     padding: 0px !important;
   }
+
+  /* YRS: STYLE OVERRIDE VOOR TITLE HEADER VAN CHATBOT */
+
+  /* Customize the header title to match the "Choose Your Experience" styling */
+.vfrc-header--title {
+  font-family: "headline-gothic-atf-rough-n2", sans-serif;
+  font-size: 88px;
+  font-weight: 500;
+  line-height: 1.22em;
+  color: #042d62; /* Matching the blue color of your header */
+  text-align: center; /* Center align for balance */
+  text-transform: uppercase; /* Optional: Makes the text all uppercase */
+  margin: 0; /* Remove extra margins */
+}
