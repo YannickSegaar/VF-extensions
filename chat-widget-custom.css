@@ -8,7 +8,7 @@
   background-position: center;
   background-repeat: no-repeat;
   color: white; /* White text color for the header */
-  padding: 15px;
+  padding: 5px;
   border-radius: 12px 12px 0 0; /* Rounded corners for the top */
   position: relative; /* Make the header a positioning reference for the dot */
 }
