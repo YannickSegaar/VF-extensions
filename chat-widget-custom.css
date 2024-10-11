@@ -149,3 +149,13 @@
   max-width: 100%; /* Ensures it doesn't exceed the screen width */
   max-height: 100%; /* Ensures it doesn't exceed the screen height */
 }
+
+.vfrc-system-response .vfrc-message {
+  resize: both; /* Allows resizing both horizontally and vertically */
+  overflow: auto; /* Ensures content is scrollable if it overflows */
+  width: auto; /* Initial width */
+  height: auto; /* Initial height */
+  max-width: 100%; /* Ensures it doesn't exceed the screen width */
+  max-height: 100%; /* Ensures it doesn't exceed the screen height */
+}
+
