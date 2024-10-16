@@ -1366,3 +1366,56 @@ export const DisableInputExtension = {
     disableInput()
   },
 }
+
+
+// YRS: MAKE.COM DATA TO VOICEFLOW EXTENSION
+
+export const makeToVoiceflowExtension = {
+  name: 'makeToVoiceflow',
+  type: 'response',
+  match: ({ trace }) => trace.type === 'ext_getMakeData' || trace.payload.name === 'ext_getMakeData',
+  render: ({ trace, element }) => {
+    const makeUrl = trace.payload.makeUrl || null;
+
+    const options = {
+      method: 'GET'
+    };
+
+    try {
+      if (!makeUrl) {
+        throw new Error('Webhook URL is null!');
+      }
+
+      // Make the API call
+      fetch(makeUrl, options).then((response) => {
+        // Check if the response status is OK
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+          return response.json();
+        }
+      })
+      .then((result) => {
+        console.log(result);
+        console.log(result.name);
+        console.log(result.email);
+        console.log(result.phone);
+
+        window.voiceflow.chat.interact({
+          type: 'complete',
+          payload: {
+            name: result.name,
+            email: result.email,
+            phone: result.phone,
+          }
+        });
+      });
+    } catch (error) {
+      console.log(error.message);
+      return {
+        next: { path: 'error' },
+        trace: [{ type: 'debug', payload: { message: "Error: " + error.message } }]
+      };
+    }
+  }
+};
