@@ -1475,11 +1475,12 @@ export const RescheduleCancelFormExtension = {
         textarea {
           width: 100%;
           height: 120px; /* Adjust the height here */
-          font-size: 0.85em; /* Adjust the font size here */
+          font-size: 0.85em;
           color: #000;
         }
         input[type="submit"] {
           background-color: #ff6900;
+          background-image: url('https://cdn-ilbjehj.nitrocdn.com/JKDUxvBhQYoRjXJVdgwijUeNHBiWkdYD/assets/images/optimized/rev-b869123/gotourshawaii.com/wp-content/uploads/2024/05/Black-White-Modern-Handwritten-Square-Studio-Logo-3-1.png');
           border: none;
           color: white;
           padding: 10px 20px;
@@ -1509,6 +1510,24 @@ export const RescheduleCancelFormExtension = {
             font-size: 1em;
             padding: 12px;
           }
+        }
+        /* File Upload Styling */
+        .file-upload {
+          border: 2px dashed rgba(46, 110, 225, 0.3);
+          padding: 20px;
+          text-align: center;
+          cursor: pointer;
+          margin-bottom: 10px;
+        }
+        .file-upload.dragover {
+          border-color: #2e6ee1;
+        }
+        .file-upload a {
+          color: #2e6ee1;
+          text-decoration: none;
+        }
+        .file-upload a:hover {
+          text-decoration: underline;
         }
       </style>
 
@@ -1579,21 +1598,9 @@ export const RescheduleCancelFormExtension = {
     // Insert file upload extension into the form
     const attachmentDiv = formContainer.querySelector('.attachment');
 
-    // Create the file upload element using the FileUploadExtension code
+    // Create the file upload element
     const fileUploadContainer = document.createElement('div');
     fileUploadContainer.innerHTML = `
-      <style>
-        .file-upload {
-          border: 2px dashed rgba(46, 110, 225, 0.3);
-          padding: 20px;
-          text-align: center;
-          cursor: pointer;
-          margin-bottom: 10px;
-        }
-        .file-upload.dragover {
-          border-color: #2e6ee1;
-        }
-      </style>
       <div class='file-upload'>Drag and drop a file here or click to upload</div>
       <input type='file' style='display: none;'>
     `;
@@ -1628,9 +1635,11 @@ export const RescheduleCancelFormExtension = {
     });
 
     let uploadedFileURL = '';
+    let uploadedFileName = '';
 
     function handleFileUpload(file) {
       console.log('File selected:', file);
+      uploadedFileName = file.name; // Save the file name
       fileUploadBox.innerHTML = `<img src="https://s3.amazonaws.com/com.voiceflow.studio/share/upload/upload.gif" alt="Uploading..." width="50" height="50">`;
 
       var data = new FormData();
@@ -1652,7 +1661,7 @@ export const RescheduleCancelFormExtension = {
             'https://tmpfiles.org/',
             'https://tmpfiles.org/dl/'
           );
-          fileUploadBox.innerHTML = '<div>File uploaded successfully</div>';
+          fileUploadBox.innerHTML = `<div>File uploaded: <a href="${uploadedFileURL}" target="_blank">${uploadedFileName}</a></div>`;
           console.log('File uploaded:', uploadedFileURL);
         })
         .catch((error) => {
@@ -1721,4 +1730,5 @@ export const RescheduleCancelFormExtension = {
     element.appendChild(formContainer);
   },
 };
+
 
