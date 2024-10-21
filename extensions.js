@@ -1513,8 +1513,13 @@ export const RescheduleCancelFormExtension = {
       </style>
 
       <div class="form-row">
-        <label for="name" class="required">First & Last Name</label>
-        <input type="text" class="name" name="name" placeholder="John Doe" required>
+        <label for="firstName" class="required">First Name</label>
+        <input type="text" class="firstName" name="firstName" placeholder="John" required>
+      </div>
+
+      <div class="form-row">
+        <label for="lastName" class="required">Last Name</label>
+        <input type="text" class="lastName" name="lastName" placeholder="Doe" required>
       </div>
 
       <div class="form-row">
@@ -1661,7 +1666,8 @@ export const RescheduleCancelFormExtension = {
     formContainer.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      const name = formContainer.querySelector('.name');
+      const firstName = formContainer.querySelector('.firstName');
+      const lastName = formContainer.querySelector('.lastName');
       const email = formContainer.querySelector('.email');
       const phone = formContainer.querySelector('.phone');
       const bookingNumber = formContainer.querySelector('.bookingNumber');
@@ -1672,7 +1678,8 @@ export const RescheduleCancelFormExtension = {
 
       // Validate fields
       if (
-        !name.checkValidity() ||
+        !firstName.checkValidity() ||
+        !lastName.checkValidity() ||
         !email.checkValidity() ||
         !phone.checkValidity() ||
         !bookingNumber.checkValidity() ||
@@ -1682,7 +1689,7 @@ export const RescheduleCancelFormExtension = {
         !reason.checkValidity()
       ) {
         // Add 'invalid' class to invalid fields
-        [name, email, phone, bookingNumber, action, tour, tickets, reason].forEach((field) => {
+        [firstName, lastName, email, phone, bookingNumber, action, tour, tickets, reason].forEach((field) => {
           if (!field.checkValidity()) {
             field.classList.add('invalid');
           } else {
@@ -1697,7 +1704,8 @@ export const RescheduleCancelFormExtension = {
       window.voiceflow.chat.interact({
         type: 'complete',
         payload: {
-          name: name.value,
+          firstName: firstName.value,
+          lastName: lastName.value,
           email: email.value,
           phone: phone.value,
           bookingNumber: bookingNumber.value,
@@ -1713,3 +1721,4 @@ export const RescheduleCancelFormExtension = {
     element.appendChild(formContainer);
   },
 };
+
