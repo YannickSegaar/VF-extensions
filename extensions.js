@@ -1705,7 +1705,7 @@ export const RescheduleCancelFormExtension = {
           tour: tour.value,
           tickets: tickets.value,
           reason: reason.value,
-          attachment: uploadedFileURL,
+          fileUrl: uploadedFileURL,
         },
       });
     });
