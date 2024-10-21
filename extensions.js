@@ -1419,3 +1419,297 @@ export const makeToVoiceflowExtension = {
     }
   }
 };
+
+// YRS: RESCHEDULE/CANCEL FORM EXTENSION
+
+export const RescheduleCancelFormExtension = {
+  name: 'RescheduleCancelForm',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'RescheduleCancelForm' || trace.payload.name === 'RescheduleCancelForm',
+  render: ({ trace, element }) => {
+    const formContainer = document.createElement('form');
+
+    formContainer.innerHTML = `
+      <style>
+        /* General Styling */
+        form {
+          font-family: "Montserrat", sans-serif;
+          width: 100%;
+          padding: 10px;
+          background-color: #f9f9f9;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 5px;
+          margin: 0;
+        }
+        label {
+          font-size: 0.9em;
+          color: #444;
+          margin-bottom: 5px;
+          display: block;
+          width: 100%;
+        }
+        .required::after {
+          content: ' *';
+          color: red;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select, textarea {
+          width: 100%;
+          border: 1px solid #ccc;
+          padding: 8px;
+          margin-bottom: 10px;
+          font-size: 0.9em;
+          border-radius: 3px;
+          box-sizing: border-box;
+          color: #000;
+        }
+        input::placeholder, textarea::placeholder, select option[value=""] {
+          color: #bfbfbf;
+        }
+        select {
+          color: #000;
+        }
+        select option {
+          color: #000;
+        }
+        textarea {
+          width: 100%;
+          height: 120px; /* Adjust the height here */
+          font-size: 0.85em; /* Adjust the font size here */
+          color: #000;
+        }
+        input[type="submit"] {
+          background-color: #ff6900;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 12px;
+          font-size: 0.9em;
+          font-weight: bold;
+          text-transform: uppercase;
+          cursor: pointer;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          width: 100%;
+          transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+          background-color: #042d62;
+        }
+        .invalid {
+          border-color: red;
+        }
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+          form {
+            width: 100%;
+          }
+          input[type="submit"] {
+            font-size: 1em;
+            padding: 12px;
+          }
+        }
+      </style>
+
+      <div class="form-row">
+        <label for="name" class="required">First & Last Name</label>
+        <input type="text" class="name" name="name" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-row">
+        <label for="email" class="required">Email</label>
+        <input type="email" class="email" name="email" placeholder="youremail@company.com" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$" title="Invalid email address">
+      </div>
+
+      <div class="form-row">
+        <label for="phone" class="required">Phone Number</label>
+        <input type="tel" class="phone" name="phone" placeholder="+1234567890" required pattern="\\d+" title="Invalid phone number, please enter only numbers">
+      </div>
+
+      <div class="form-row">
+        <label for="bookingNumber" class="required">Booking Number</label>
+        <input type="text" class="bookingNumber" name="bookingNumber" placeholder="ABC123" required>
+      </div>
+
+      <div class="form-row">
+        <label for="action" class="required">Action</label>
+        <select class="action" name="action" required>
+          <option value="" disabled selected>Select Action</option>
+          <option value="Cancel">Cancel</option>
+          <option value="Reschedule">Reschedule</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="tour" class="required">Select Tour</label>
+        <select class="tour" name="tour" required>
+          <option value="" disabled selected>Select Tour</option>
+          <option value="Tour A">Tour A</option>
+          <option value="Tour B">Tour B</option>
+          <option value="Tour C">Tour C</option>
+          <option value="Tour D">Tour D</option>
+          <option value="Tour E">Tour E</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="tickets" class="required">Number of Tickets</label>
+        <input type="number" class="tickets" name="tickets" min="1" placeholder="1" required>
+      </div>
+
+      <div class="form-row">
+        <label for="reason" class="required">Reason</label>
+        <textarea class="reason" name="reason" placeholder="Please explain your reason" required></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="attachment">Attachment (Optional)</label>
+        <div class="attachment"></div>
+      </div>
+
+      <input type="submit" class="submit" value="Submit">
+    `;
+
+    // Insert file upload extension into the form
+    const attachmentDiv = formContainer.querySelector('.attachment');
+
+    // Create the file upload element using the FileUploadExtension code
+    const fileUploadContainer = document.createElement('div');
+    fileUploadContainer.innerHTML = `
+      <style>
+        .file-upload {
+          border: 2px dashed rgba(46, 110, 225, 0.3);
+          padding: 20px;
+          text-align: center;
+          cursor: pointer;
+          margin-bottom: 10px;
+        }
+        .file-upload.dragover {
+          border-color: #2e6ee1;
+        }
+      </style>
+      <div class='file-upload'>Drag and drop a file here or click to upload</div>
+      <input type='file' style='display: none;'>
+    `;
+
+    const fileInput = fileUploadContainer.querySelector('input[type=file]');
+    const fileUploadBox = fileUploadContainer.querySelector('.file-upload');
+
+    fileUploadBox.addEventListener('click', function () {
+      fileInput.click();
+    });
+
+    fileUploadBox.addEventListener('dragover', function (event) {
+      event.preventDefault();
+      fileUploadBox.classList.add('dragover');
+    });
+
+    fileUploadBox.addEventListener('dragleave', function (event) {
+      event.preventDefault();
+      fileUploadBox.classList.remove('dragover');
+    });
+
+    fileUploadBox.addEventListener('drop', function (event) {
+      event.preventDefault();
+      fileUploadBox.classList.remove('dragover');
+      const file = event.dataTransfer.files[0];
+      handleFileUpload(file);
+    });
+
+    fileInput.addEventListener('change', function () {
+      const file = fileInput.files[0];
+      handleFileUpload(file);
+    });
+
+    let uploadedFileURL = '';
+
+    function handleFileUpload(file) {
+      console.log('File selected:', file);
+      fileUploadBox.innerHTML = `<img src="https://s3.amazonaws.com/com.voiceflow.studio/share/upload/upload.gif" alt="Uploading..." width="50" height="50">`;
+
+      var data = new FormData();
+      data.append('file', file);
+
+      fetch('https://tmpfiles.org/api/v1/upload', {
+        method: 'POST',
+        body: data,
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Upload failed: ' + response.statusText);
+          }
+        })
+        .then((result) => {
+          uploadedFileURL = result.data.url.replace(
+            'https://tmpfiles.org/',
+            'https://tmpfiles.org/dl/'
+          );
+          fileUploadBox.innerHTML = '<div>File uploaded successfully</div>';
+          console.log('File uploaded:', uploadedFileURL);
+        })
+        .catch((error) => {
+          console.error(error);
+          fileUploadBox.innerHTML = '<div>Error during upload</div>';
+        });
+    }
+
+    attachmentDiv.appendChild(fileUploadContainer);
+
+    formContainer.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = formContainer.querySelector('.name');
+      const email = formContainer.querySelector('.email');
+      const phone = formContainer.querySelector('.phone');
+      const bookingNumber = formContainer.querySelector('.bookingNumber');
+      const action = formContainer.querySelector('.action');
+      const tour = formContainer.querySelector('.tour');
+      const tickets = formContainer.querySelector('.tickets');
+      const reason = formContainer.querySelector('.reason');
+
+      // Validate fields
+      if (
+        !name.checkValidity() ||
+        !email.checkValidity() ||
+        !phone.checkValidity() ||
+        !bookingNumber.checkValidity() ||
+        !action.checkValidity() ||
+        !tour.checkValidity() ||
+        !tickets.checkValidity() ||
+        !reason.checkValidity()
+      ) {
+        // Add 'invalid' class to invalid fields
+        [name, email, phone, bookingNumber, action, tour, tickets, reason].forEach((field) => {
+          if (!field.checkValidity()) {
+            field.classList.add('invalid');
+          } else {
+            field.classList.remove('invalid');
+          }
+        });
+        return;
+      }
+
+      formContainer.querySelector('.submit').remove();
+
+      window.voiceflow.chat.interact({
+        type: 'complete',
+        payload: {
+          name: name.value,
+          email: email.value,
+          phone: phone.value,
+          bookingNumber: bookingNumber.value,
+          action: action.value,
+          tour: tour.value,
+          tickets: tickets.value,
+          reason: reason.value,
+          attachment: uploadedFileURL,
+        },
+      });
+    });
+
+    element.appendChild(formContainer);
+  },
+};
