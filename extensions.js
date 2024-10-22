@@ -55,7 +55,7 @@ export const FormExtension = {
           <input type="email" class="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid email address"><br><br>
 
           <label for="phone">Phone Number</label>
-          <input type="tel" class="phone" name="phone" required pattern="\\d+" title="Invalid phone number, please enter only numbers"><br><br>
+          <input type="tel" class="phone" name="phone" required pattern="^\+?[0-9\s\-]*$" title="Invalid phone number, please enter only numbers"><br><br>
 
           <label for="notes">Notes</label>
           <textarea class="notes" name="notes"></textarea><br><br>
@@ -781,7 +781,7 @@ export const GTH_FormExtension = {
 
           <div class="form-row">
             <label for="phone" class="required">Contact Number</label>
-            <input type="tel" class="phone" name="phone" placeholder="+123 456 7890" required pattern="\\d+" title="Invalid phone number, please enter only numbers">
+            <input type="tel" class="phone" name="phone" placeholder="+123 456 7890" required pattern="^\+?[0-9\s\-]*$" title="Invalid phone number, please enter only numbers">
           </div>
 
           <div class="form-row">
@@ -1548,7 +1548,7 @@ export const RescheduleCancelFormExtension = {
 
       <div class="form-row">
         <label for="phone" class="required">Phone Number</label>
-        <input type="tel" class="phone" name="phone" placeholder="+1234567890" required pattern="\\d+" title="Invalid phone number, please enter only numbers">
+        <input type="tel" class="phone" name="phone" placeholder="+1234567890" required pattern="^\+?[0-9\s\-]*$" title="Invalid phone number, please enter only numbers">
       </div>
 
       <div class="form-row">
